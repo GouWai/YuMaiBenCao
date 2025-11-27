@@ -349,19 +349,49 @@
             padding: 60px 0 24px;
         }
         
-        .footer-inner {
+        .footer-top {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 32px;
+            justify-content: center;
+            align-items: center;
             margin-bottom: 32px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             padding-bottom: 32px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
         }
-        
-        .footer-column {
+
+        .footer-top-left {
             flex: 1;
-            min-width: 200px;
+            max-width: 300px;
+        }
+
+        .footer-top-right {
+            flex: 2;
+            text-align: left;
+            margin-left: 60px;
+            max-width: 500px;
+        }
+
+        .footer-bottom-content {
+            display: flex;
+            justify-content: center;
+            gap: 120px;
+            margin-bottom: 32px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-column {
+            flex: 0 0 auto;
+            min-width: 150px;
+        }
+
+        /* 确保快速链接和购买渠道列宽度相等 */
+        .footer-column:nth-child(1),
+        .footer-column:nth-child(2) {
+            flex: 0 0 150px;
         }
         
         .footer-logo {
@@ -389,7 +419,7 @@
             color: rgba(255, 255, 255, 0.7);
             font-size: 14px;
             margin-bottom: 24px;
-            max-width: 300px;
+            white-space: nowrap;
         }
         
         .footer-social {
@@ -766,54 +796,42 @@
     <!-- 页脚 -->
     <footer class="site-footer">
         <div class="container">
-            <div class="footer-inner">
-                <div class="footer-column">
+            <!-- 上部分：左边标题副标题，右边描述文本 -->
+            <div class="footer-top">
+                <div class="footer-top-left">
                     <div class="footer-logo">
                         <div class="logo-mark small">禹脉</div>
-                        <div>
+                        <div class="logo-text-container">
                             <h3 style="color: #fff; margin: 0; font-size: 18px;">禹脉本草</h3>
-                            <p style="color: rgba(255,255,255,0.7); margin: 0; font-size: 12px;">传承千年智慧，守护万家健康</p>
+                            <p style="color: rgba(255,255,255,0.7); margin: 5px 0 0 0; font-size: 12px;">传承千年智慧，守护万家健康</p>
                         </div>
                     </div>
-                    <p class="footer-desc">禹脉本草致力于传承中医药文化精髓，让千年中医药智慧惠及现代生活。</p>
-                    <div class="footer-social">
-                        <a href="#" aria-label="微信"><i class="fab fa-weixin"></i></a>
-                        <a href="#" aria-label="微博"><i class="fab fa-weibo"></i></a>
-                        <a href="#" aria-label="抖音"><i class="fab fa-tiktok"></i></a>
-                        <a href="#" aria-label="小红书"><i class="fas fa-book-open"></i></a>
-                    </div>
                 </div>
+                <div class="footer-top-right">
+                    <p class="footer-desc" style="color: rgba(255,255,255,0.8); font-size: 14px; margin: 0; line-height: 1.5;">禹脉本草致力于传承中医药文化精髓，让千年中医药智慧惠及现代生活。</p>
+                </div>
+            </div>
+            
+            <!-- 下部分：快速链接和购买渠道 -->
+            <div class="footer-bottom-content">
                 <div class="footer-column">
                     <h4>快速链接</h4>
                     <ul class="footer-links">
-                        <li><a href="../culture/index.html">首页</a></li>
-                        <li><a href="../culture/index.html">中医药文化</a></li>
-                        <li><a href="#herbs">禹药六君子</a></li>
-                        <li><a href="#products">产品中心</a></li>
-                        <li><a href="../team/index.html">关于我们</a></li>
+                        <li><a href="../index.html">中医药文化</a></li>
+                        <li><a href="index.html">产品中心</a></li>
+                        <li><a href="../page3_our_story/溯源之旅/我们的故事.html">关于我们</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h4>购买渠道</h4>
                     <ul class="footer-links">
-                        <li><a href="#">官方商城</a></li>
-                        <li><a href="#">京东旗舰店</a></li>
-                        <li><a href="#">天猫旗舰店</a></li>
+                        <li><a href="https://m.tb.cn/h.SrxLnZUUnzcUod1" target="_blank">官方商城</a></li>
                         <li><a href="#">线下门店</a></li>
-                        <li><a href="#">经销商合作</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>联系我们</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">联系方式</a></li>
-                        <li><a href="#">意见反馈</a></li>
-                        <li><a href="#">加入我们</a></li>
-                        <li><a href="#">隐私政策</a></li>
-                        <li><a href="#">使用条款</a></li>
+                        <li><a href="http://www.tsdzykj.com/index/home/index" target="_blank">经销商合作</a></li>
                     </ul>
                 </div>
             </div>
+            
             <div class="footer-bottom">
                 <p>© 2024 禹脉本草 版权所有 | 京ICP备12345678号</p>
             </div>

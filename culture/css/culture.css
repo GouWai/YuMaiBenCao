@@ -139,26 +139,71 @@
     padding: 60px 0 24px;
 }
 
-.footer-inner {
+.footer-top {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 32px;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 32px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding-bottom: 32px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer-top-left {
+    flex: 1;
+    max-width: 300px;
+}
+
+.footer-top-right {
+    flex: 2;
+    text-align: left;
+    margin-left: 60px;
+    max-width: 500px;
+}
+
+.footer-bottom-content {
+    display: flex;
+    justify-content: center;
+    gap: 120px;
+    margin-bottom: 32px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .footer-column {
-    flex: 1;
-    min-width: 200px;
+    flex: 0 0 auto;
+    min-width: 150px;
+}
+
+/* 确保快速链接和购买渠道列宽度相等 */
+.footer-column:nth-child(1),
+.footer-column:nth-child(2) {
+    flex: 0 0 150px;
 }
 
 .footer-logo {
     display: flex;
-    gap: 12px;
     align-items: center;
-    margin-bottom: 16px;
+    margin-bottom: 0;
+    flex-direction: row;
+    gap: 12px;
+}
+
+.logo-text-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-left: 10px;
+}
+
+.footer-desc {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0 !important;
 }
 
 .logo-mark.small {
@@ -179,7 +224,7 @@
     color: rgba(255, 255, 255, 0.7);
     font-size: 14px;
     margin-bottom: 24px;
-    max-width: 300px;
+    white-space: nowrap;
 }
 
 .footer-social {
