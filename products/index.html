@@ -11,344 +11,403 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- 引入Google字体 -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
     <!-- 页面专属样式 -->
     <style>
-        :root{
+        :root {
             --container: 1200px;
-            --green: #0f7a5b; /* 本草绿 */
-            --gold: #d4af37; /* 钧瓷金 */
+            --green: #0f7a5b;
+            /* 本草绿 */
+            --gold: #d4af37;
+            /* 钧瓷金 */
             --muted: #6b7a73;
             --bg: #f6faf6;
             --card-bg: #ffffff;
-            --shadow: 0 6px 16px rgba(10,30,20,0.06);
+            --shadow: 0 6px 16px rgba(10, 30, 20, 0.06);
         }
 
-        *{box-sizing:border-box;margin:0;padding:0}
-        html,body{height:100%}
-        body{
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        body {
             font-family: "Inter", "Noto Serif SC", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-            background:var(--bg);
-            color:#163029;
-            -webkit-font-smoothing:antialiased;
-            -moz-osx-font-smoothing:grayscale;
-            line-height:1.6;
+            background: var(--bg);
+            color: #163029;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 1.6;
         }
 
         /* 容器样式 */
-        .container{
+        .container {
             width: calc(100% - 32px);
             max-width: var(--container);
             margin: 0 auto;
         }
 
         /* 英雄区样式 */
-        .hero{
-            position:relative;
-            min-height:420px;
-            display:flex;
-            align-items:center;
-            color:white;
-            margin-bottom:40px;
-            overflow:hidden;
-            cursor:zoom-in;
+        .hero {
+            position: relative;
+            min-height: 420px;
+            display: flex;
+            align-items: center;
+            color: white;
+            margin-bottom: 40px;
+            overflow: hidden;
+            cursor: zoom-in;
         }
-        .hero-bg{
-            position:absolute;
-            inset:0;
-            background-image:url('../img/背景图.jpg'); /* 中药材种植基地航拍图 */
-            background-size:cover;
-            background-position:center;
-            filter:brightness(0.65) saturate(0.9);
-            z-index:0;
-            transition:transform 0.8s ease;
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('../img/背景图.jpg');
+            /* 中药材种植基地航拍图 */
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.65) saturate(0.9);
+            z-index: 0;
+            transition: transform 0.8s ease;
         }
-        .hero:hover .hero-bg{
-            transform:scale(1.1);
+
+        .hero:hover .hero-bg {
+            transform: scale(1.1);
         }
-        .hero-overlay{
-            position:absolute;
-            inset:0;
-            background:linear-gradient(90deg,rgba(10,40,30,0.7),rgba(10,40,30,0.4));
-            z-index:1;
-            pointer-events:none;
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(10, 40, 30, 0.7), rgba(10, 40, 30, 0.4));
+            z-index: 1;
+            pointer-events: none;
         }
-        .hero-content{
-            position:relative;
-            z-index:2;
-            padding:48px 16px;
-            max-width:600px;
-            pointer-events:auto;
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 48px 16px;
+            max-width: 600px;
+            pointer-events: auto;
         }
-        .hero-tags{
-            display:flex;
-            gap:8px;
-            margin-bottom:24px;
+
+        .hero-tags {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
         }
-        .hero-tag{
-            background:rgba(255,255,255,0.2);
-            padding:4px 12px;
-            border-radius:16px;
-            font-size:12px;
+
+        .hero-tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 12px;
         }
-        .hero-title{
-            font-size:36px;
-            font-weight:700;
+
+        .hero-title {
+            font-size: 36px;
+            font-weight: 700;
             font-family: "Noto Serif SC", serif;
-            margin-bottom:16px;
-            line-height:1.3;
+            margin-bottom: 16px;
+            line-height: 1.3;
         }
-        .hero-subtitle{
-            font-size:18px;
-            margin-bottom:24px;
-            opacity:0.9;
-            line-height:1.6;
+
+        .hero-subtitle {
+            font-size: 18px;
+            margin-bottom: 24px;
+            opacity: 0.9;
+            line-height: 1.6;
         }
 
         /* 按钮样式 */
-        .btn{
-            display:inline-block;
-            padding:12px 24px;
-            border-radius:28px;
-            text-decoration:none;
-            font-weight:600;
-            font-size:14px;
-            transition:all 0.2s ease;
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 28px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s ease;
         }
-        .btn-primary{
-            background:var(--green);
-            color:#fff;
-            box-shadow: 0 6px 16px rgba(11,90,64,0.2);
+
+        .btn-primary {
+            background: var(--green);
+            color: #fff;
+            box-shadow: 0 6px 16px rgba(11, 90, 64, 0.2);
         }
-        .btn-primary:hover{
-            background:#0b5a40;
-            transform:translateY(-2px);
+
+        .btn-primary:hover {
+            background: #0b5a40;
+            transform: translateY(-2px);
         }
-        .btn-ghost{
-            background:transparent;
-            border:1px solid rgba(255,255,255,0.3);
-            color:#fff;
-            margin-left:12px;
+
+        .btn-ghost {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            margin-left: 12px;
         }
-        .btn-ghost:hover{
-            background:rgba(255,255,255,0.1);
+
+        .btn-ghost:hover {
+            background: rgba(255, 255, 255, 0.1);
         }
 
         /* 禹药六君子介绍区 */
-        .yuyao-section{
-            padding:60px 0;
-            background:var(--card-bg);
-            margin-bottom:60px;
+        .yuyao-section {
+            padding: 60px 0;
+            background: var(--card-bg);
+            margin-bottom: 60px;
         }
-        .section-header{
-            text-align:center;
-            margin-bottom:48px;
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
         }
-        .section-title{
-            font-size:32px;
+
+        .section-title {
+            font-size: 32px;
             font-family: "Noto Serif SC", serif;
-            color:#13302a;
-            margin-bottom:12px;
-            position:relative;
-            display:inline-block;
+            color: #13302a;
+            margin-bottom: 12px;
+            position: relative;
+            display: inline-block;
         }
-        .section-title::after{
-            content:'';
-            position:absolute;
-            bottom:-8px;
-            left:50%;
-            transform:translateX(-50%);
-            width:60px;
-            height:2px;
-            background:var(--gold);
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: var(--gold);
         }
-        .section-desc{
-            color:var(--muted);
-            max-width:700px;
-            margin:0 auto;
+
+        .section-desc {
+            color: var(--muted);
+            max-width: 700px;
+            margin: 0 auto;
         }
 
         /* 六君子卡片容器 */
-        .yuyao-grid{
-            display:grid;
+        .yuyao-grid {
+            display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap:32px;
-            margin-top:24px;
+            gap: 32px;
+            margin-top: 24px;
         }
-        .yuyao-card{
-            background:var(--bg);
-            border-radius:16px;
-            overflow:hidden;
-            box-shadow:var(--shadow);
-            transition:transform 0.3s ease;
-            border:1px solid rgba(15,122,91,0.05);
+
+        .yuyao-card {
+            background: var(--bg);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(15, 122, 91, 0.05);
         }
-        .yuyao-card:hover{
-            transform:translateY(-8px);
+
+        .yuyao-card:hover {
+            transform: translateY(-8px);
         }
-        .yuyao-card-header{
-            position:relative;
-            height:180px;
-            overflow:hidden;
+
+        .yuyao-card-header {
+            position: relative;
+            height: 180px;
+            overflow: hidden;
         }
-        .yuyao-card-header img{
-            width:100%;
-            height:100%;
-            object-fit:cover;
-            transition:transform 0.5s ease;
+
+        .yuyao-card-header img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
         }
-        .yuyao-card:hover .yuyao-card-header img{
-            transform:scale(1.05);
+
+        .yuyao-card:hover .yuyao-card-header img {
+            transform: scale(1.05);
         }
-        .yuyao-card-badge{
-            position:absolute;
-            top:12px;
-            right:12px;
-            background:var(--gold);
-            color:#fff;
-            padding:4px 10px;
-            border-radius:12px;
-            font-size:12px;
-            font-weight:600;
+
+        .yuyao-card-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: var(--gold);
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
         }
-        .yuyao-card-body{
-            padding:20px;
+
+        .yuyao-card-body {
+            padding: 20px;
         }
-        .yuyao-card-title{
-            font-size:18px;
+
+        .yuyao-card-title {
+            font-size: 18px;
             font-family: "Noto Serif SC", serif;
-            margin-bottom:8px;
-            display:flex;
-            align-items:center;
-            gap:8px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        .yuyao-card-title i{
-            color:var(--green);
+
+        .yuyao-card-title i {
+            color: var(--green);
         }
-        .yuyao-card-desc{
-            color:var(--muted);
-            font-size:14px;
-            margin-bottom:16px;
-            line-height:1.5;
+
+        .yuyao-card-desc {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 16px;
+            line-height: 1.5;
         }
-        .yuyao-card-props{
-            display:flex;
-            flex-wrap:wrap;
-            gap:8px;
-            margin-top:12px;
+
+        .yuyao-card-props {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
         }
-        .yuyao-card-prop{
-            background:rgba(15,122,91,0.05);
-            padding:4px 10px;
-            border-radius:8px;
-            font-size:12px;
-            color:var(--green);
+
+        .yuyao-card-prop {
+            background: rgba(15, 122, 91, 0.05);
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 12px;
+            color: var(--green);
         }
 
         /* 文创产品区 */
-        .product-section{
-            padding:40px 0 60px;
+        .product-section {
+            padding: 40px 0 60px;
         }
-        .product-tabs{
-            display:flex;
-            justify-content:center;
-            gap:24px;
-            margin-bottom:32px;
-            border-bottom:1px solid rgba(15,122,91,0.1);
-            padding-bottom:12px;
+
+        .product-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 32px;
+            border-bottom: 1px solid rgba(15, 122, 91, 0.1);
+            padding-bottom: 12px;
         }
-        .product-tab{
-            padding:8px 16px;
-            cursor:pointer;
-            font-weight:600;
-            color:var(--muted);
-            border-radius:8px;
-            transition:all 0.2s ease;
+
+        .product-tab {
+            padding: 8px 16px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--muted);
+            border-radius: 8px;
+            transition: all 0.2s ease;
         }
-        .product-tab.active{
-            color:var(--green);
-            background:rgba(15,122,91,0.08);
+
+        .product-tab.active {
+            color: var(--green);
+            background: rgba(15, 122, 91, 0.08);
         }
 
         /* 产品卡片容器 */
-        .product-grid{
-            display:grid;
+        .product-grid {
+            display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap:24px;
+            gap: 24px;
         }
-        .product-card{
-            background:var(--card-bg);
-            border-radius:12px;
-            overflow:hidden;
-            box-shadow:var(--shadow);
-            transition:transform 0.2s ease;
+
+        .product-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s ease;
+            text-decoration: none; /* 去除下划线 */
+            color: inherit; /* 继承父级文字颜色 */
+            display: block; /* 保持卡片块级布局 */
         }
-        .product-card:hover{
-            transform:translateY(-4px);
+
+        .product-card:hover {
+            transform: translateY(-4px);
         }
-        .product-card-img{
-            height:200px;
-            overflow:hidden;
+
+        .product-card-img {
+            height: 200px;
+            overflow: hidden;
+            border: none; /* 去除图片边框（部分浏览器默认） */
         }
-        .product-card-img img{
-            width:100%;
-            height:100%;
-            object-fit:cover;
-            transition:transform 0.5s ease;
+
+        .product-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
         }
-        .product-card:hover .product-card-img img{
-            transform:scale(1.05);
+
+        .product-card:hover .product-card-img img {
+            transform: scale(1.05);
         }
-        .product-card-body{
-            padding:16px;
+
+        .product-card-body {
+            padding: 16px;
         }
-        .product-card-title{
-            font-size:16px;
-            font-weight:600;
-            margin-bottom:8px;
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
+
+        .product-card-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .product-card-price{
-            color:var(--green);
-            font-weight:700;
+
+        .product-card-price {
+            color: var(--green);
+            font-weight: 700;
         }
-        .product-card-desc{
-            font-size:13px;
-            color:var(--muted);
-            margin-bottom:12px;
-            display:-webkit-box;
-            -webkit-line-clamp:2;
-            -webkit-box-orient:vertical;
-            overflow:hidden;
+
+        .product-card-desc {
+            font-size: 13px;
+            color: var(--muted);
+            margin-bottom: 12px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
-        .product-card-tag{
-            display:inline-block;
-            font-size:12px;
-            color:var(--gold);
-            background:rgba(212,175,55,0.1);
-            padding:2px 8px;
-            border-radius:4px;
-            margin-right:8px;
+
+        .product-card-tag {
+            display: inline-block;
+            font-size: 12px;
+            color: var(--gold);
+            background: rgba(212, 175, 55, 0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-right: 8px;
         }
 
         /* 购买面板 */
-        .purchase-panel{
-            width:320px;
-            flex-shrink:0;
-            position:sticky;
-            top:90px;
-            align-self:flex-start;
+        .purchase-panel {
+            width: 320px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 90px;
+            align-self: flex-start;
         }
-        
+
         /* 页脚样式 - 与第一个页面保持一致 */
         .site-footer {
             background: linear-gradient(180deg, #063a2a, #0b5a40);
             color: #e8f7ef;
             padding: 60px 0 24px;
         }
-        
+
         .footer-top {
             display: flex;
             justify-content: center;
@@ -393,14 +452,14 @@
         .footer-column:nth-child(2) {
             flex: 0 0 150px;
         }
-        
+
         .footer-logo {
             display: flex;
             gap: 12px;
             align-items: center;
             margin-bottom: 16px;
         }
-        
+
         .logo-mark.small {
             width: 48px;
             height: 48px;
@@ -414,19 +473,19 @@
             font-weight: 700;
             font-family: "Noto Serif SC", serif;
         }
-        
+
         .footer-desc {
             color: rgba(255, 255, 255, 0.7);
             font-size: 14px;
             margin-bottom: 24px;
             white-space: nowrap;
         }
-        
+
         .footer-social {
             display: flex;
             gap: 16px;
         }
-        
+
         .footer-social a {
             width: 36px;
             height: 36px;
@@ -439,18 +498,18 @@
             transition: background 0.2s ease;
             text-decoration: none;
         }
-        
+
         .footer-social a:hover {
             background: #d4af37;
         }
-        
+
         .footer-column h4 {
             font-size: 16px;
             margin-bottom: 16px;
             position: relative;
             padding-bottom: 8px;
         }
-        
+
         .footer-column h4::after {
             content: '';
             position: absolute;
@@ -460,39 +519,39 @@
             height: 2px;
             background: #d4af37;
         }
-        
+
         .footer-links {
             list-style: none;
         }
-        
+
         .footer-links li {
             margin-bottom: 12px;
         }
-        
+
         .footer-links a {
             color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
             font-size: 14px;
             transition: color 0.2s ease;
         }
-        
+
         .footer-links a:hover {
             color: #d4af37;
         }
-        
+
         .footer-bottom {
             text-align: center;
             font-size: 12px;
             color: rgba(255, 255, 255, 0.5);
             padding-top: 24px;
         }
-        
+
         /* 响应式调整 */
         @media (max-width: 768px) {
             .footer-inner {
                 flex-direction: column;
             }
-            
+
             .footer-column {
                 min-width: 100%;
             }
@@ -509,8 +568,8 @@
                 <span class="logo-text">禹脉本草</span>
             </div>
             <div class="nav-links">
-                <a href="../index.html" >文化溯源</a>
-                <a href="../products/index.html"  class="active">本草好物</a>
+                <a href="../index.html">文化溯源</a>
+                <a href="../products/index.html" class="active">本草好物</a>
                 <a href="../page2_medium/各大媒体宣传成果/媒体宣传成果.html">媒体聚焦</a>
                 <a href="../page3_our_story/溯源之旅/我们的故事.html">我们的故事</a>
             </div>
@@ -541,7 +600,8 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">禹药六君子</h2>
-                <p class="section-desc">禹州作为中华药都，以其独特的地理环境和气候条件，孕育出品质上乘的道地药材。其中，禹丹参、禹半夏、禹南星、禹白芷、禹白附、禹金银花被誉为"禹药六君子"，闻名古今中外。</p>
+                <p class="section-desc">
+                    禹州作为中华药都，以其独特的地理环境和气候条件，孕育出品质上乘的道地药材。其中，禹丹参、禹半夏、禹南星、禹白芷、禹白附、禹金银花被誉为"禹药六君子"，闻名古今中外。</p>
             </div>
             <div class="yuyao-grid">
                 <div class="yuyao-card">
@@ -646,15 +706,15 @@
                 <p class="section-desc">结合传统中医药文化与现代设计理念，打造兼具实用性与艺术性的产品，让中医药文化走进现代生活。</p>
             </div>
             <!-- <div class="product-tabs">
-                <div class="product-tab active">全部产品</div>
-                <div class="product-tab">养生茶品</div>
-                <div class="product-tab">护肤品</div>
-                <div class="product-tab">文创周边</div>
-                <div class="product-tab">中药材礼盒</div>
-            </div> -->
+        <div class="product-tab active">全部产品</div>
+        <div class="product-tab">养生茶品</div>
+        <div class="product-tab">护肤品</div>
+        <div class="product-tab">文创周边</div>
+        <div class="product-tab">中药材礼盒</div>
+    </div> -->
             <div class="product-grid">
                 <!-- 产品卡片1 -->
-                <div class="product-card">
+                <a href="https://m.tb.cn/h.SrxLnZUUnzcUod1" class="product-card" target="_blank">
                     <div class="product-card-img">
                         <img src="../img/一勺梨膏.jpg" alt="一勺梨膏">
                     </div>
@@ -669,9 +729,9 @@
                             <span class="product-card-tag">独立包装</span>
                         </div>
                     </div>
-                </div>
+                </a>
                 <!-- 产品卡片2 -->
-                <div class="product-card">
+                <a href="https://m.tb.cn/h.SrxLnZUUnzcUod1" class="product-card" target="_blank">
                     <div class="product-card-img">
                         <img src="../img/二十八味足浴包.jpg" alt="二十八味足浴包">
                     </div>
@@ -686,9 +746,9 @@
                             <span class="product-card-tag">天然草本</span>
                         </div>
                     </div>
-                </div>
+                </a>
                 <!-- 产品卡片3 -->
-                <div class="product-card">
+                <a href="https://m.tb.cn/h.SrxLnZUUnzcUod1" class="product-card" target="_blank">
                     <div class="product-card-img">
                         <img src="../img/亚麻籽无花果茶.jpg" alt="亚麻籽无花果茶">
                     </div>
@@ -703,9 +763,9 @@
                             <span class="product-card-tag">肠道健康</span>
                         </div>
                     </div>
-                </div>
+                </a>
                 <!-- 产品卡片4 -->
-                <div class="product-card">
+                <a href="https://m.tb.cn/h.SrxLnZUUnzcUod1" class="product-card" target="_blank">
                     <div class="product-card-img">
                         <img src="../img/挡酒令.jpg" alt="挡酒令">
                     </div>
@@ -720,9 +780,9 @@
                             <span class="product-card-tag">草本配方</span>
                         </div>
                     </div>
-                </div>
+                </a>
                 <!-- 产品卡片5 -->
-                <div class="product-card">
+                <a href="https://m.tb.cn/h.SrxLnZUUnzcUod1" class="product-card" target="_blank">
                     <div class="product-card-img">
                         <img src="../img/竹蔗茅根雪梨茶.jpg" alt="竹蔗茅根雪梨茶">
                     </div>
@@ -737,9 +797,9 @@
                             <span class="product-card-tag">生津止渴</span>
                         </div>
                     </div>
-                </div>
+                </a>
                 <!-- 产品卡片6 -->
-                <div class="product-card">
+                <a href="https://m.tb.cn/h.SrxLnZUUnzcUod1" class="product-card" target="_blank">
                     <div class="product-card-img">
                         <img src="../img/红参玫瑰女神茶.jpg" alt="红参玫瑰女神茶">
                     </div>
@@ -754,41 +814,41 @@
                             <span class="product-card-tag">玫瑰养颜</span>
                         </div>
                     </div>
-                </div>
-				<!-- 产品卡片7 -->
-				<div class="product-card">
-				    <div class="product-card-img">
-				        <img src="../img/酸枣仁晚安茶.jpg" alt="酸枣仁晚安茶">
-				    </div>
-				    <div class="product-card-body">
-				        <div class="product-card-title">
-				            <span>酸枣仁晚安茶</span>
-				            <span class="product-card-price">¥39.90</span>
-				        </div>
-				        <p class="product-card-desc">以酸枣仁为主，搭配茯苓、百合等,适用于失眠多梦、心烦气躁者。</p>
-				        <div>
-				            <span class="product-card-tag">养心安神</span>
-				            <span class="product-card-tag">助眠</span>
-				        </div>
-				    </div>
-				</div>
-				<!-- 产品卡片8 -->
-				<div class="product-card">
-				    <div class="product-card-img">
-				        <img src="../img/青桔柠檬百香果茶.jpg" alt="青桔柠檬百香果茶">
-				    </div>
-				    <div class="product-card-body">
-				        <div class="product-card-title">
-				            <span>青桔柠檬百香果茶</span>
-				            <span class="product-card-price">¥29.90</span>
-				        </div>
-				        <p class="product-card-desc">青柠和百香果富含维生素C，主要功效是生津解渴、开胃消食、美容养颜。</p>
-				        <div>
-				            <span class="product-card-tag">生津开胃</span>
-				            <span class="product-card-tag">清爽解渴</span>
-				        </div>
-				    </div>
-				</div>
+                </a>
+                <!-- 产品卡片7 -->
+                <a href="https://m.tb.cn/h.SrxLnZUUnzcUod1" class="product-card" target="_blank">
+                    <div class="product-card-img">
+                        <img src="../img/酸枣仁晚安茶.jpg" alt="酸枣仁晚安茶">
+                    </div>
+                    <div class="product-card-body">
+                        <div class="product-card-title">
+                            <span>酸枣仁晚安茶</span>
+                            <span class="product-card-price">¥39.90</span>
+                        </div>
+                        <p class="product-card-desc">以酸枣仁为主，搭配茯苓、百合等,适用于失眠多梦、心烦气躁者。</p>
+                        <div>
+                            <span class="product-card-tag">养心安神</span>
+                            <span class="product-card-tag">助眠</span>
+                        </div>
+                    </div>
+                </a>
+                <!-- 产品卡片8 -->
+                <a href="https://m.tb.cn/h.SrxLnZUUnzcUod1" class="product-card" target="_blank">
+                    <div class="product-card-img">
+                        <img src="../img/青桔柠檬百香果茶.jpg" alt="青桔柠檬百香果茶">
+                    </div>
+                    <div class="product-card-body">
+                        <div class="product-card-title">
+                            <span>青桔柠檬百香果茶</span>
+                            <span class="product-card-price">¥29.90</span>
+                        </div>
+                        <p class="product-card-desc">青柠和百香果富含维生素C，主要功效是生津解渴、开胃消食、美容养颜。</p>
+                        <div>
+                            <span class="product-card-tag">生津开胃</span>
+                            <span class="product-card-tag">清爽解渴</span>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
@@ -803,15 +863,18 @@
                         <div class="logo-mark small">禹脉</div>
                         <div class="logo-text-container">
                             <h3 style="color: #fff; margin: 0; font-size: 18px;">禹脉本草</h3>
-                            <p style="color: rgba(255,255,255,0.7); margin: 5px 0 0 0; font-size: 12px;">传承千年智慧，守护万家健康</p>
+                            <p style="color: rgba(255,255,255,0.7); margin: 5px 0 0 0; font-size: 12px;">传承千年智慧，守护万家健康
+                            </p>
                         </div>
                     </div>
                 </div>
                 <div class="footer-top-right">
-                    <p class="footer-desc" style="color: rgba(255,255,255,0.8); font-size: 14px; margin: 0; line-height: 1.5;">禹脉本草致力于传承中医药文化精髓，让千年中医药智慧惠及现代生活。</p>
+                    <p class="footer-desc"
+                        style="color: rgba(255,255,255,0.8); font-size: 14px; margin: 0; line-height: 1.5;">
+                        禹脉本草致力于传承中医药文化精髓，让千年中医药智慧惠及现代生活。</p>
                 </div>
             </div>
-            
+
             <!-- 下部分：快速链接和购买渠道 -->
             <div class="footer-bottom-content">
                 <div class="footer-column">
@@ -831,7 +894,7 @@
                     </ul>
                 </div>
             </div>
-            
+
             <div class="footer-bottom">
                 <p>© 2024 禹脉本草 版权所有 | 京ICP备12345678号</p>
             </div>
@@ -842,13 +905,13 @@
     <script>
         // 产品标签切换功能
         document.querySelectorAll('.product-tab').forEach(tab => {
-            tab.addEventListener('click', function() {
+            tab.addEventListener('click', function () {
                 document.querySelectorAll('.product-tab').forEach(t => t.classList.remove('active'));
                 this.classList.add('active');
                 // 这里可以添加产品过滤逻辑
             });
         });
-        
+
         // 平滑滚动
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
