@@ -7,6 +7,7 @@
   <title>禹脉本草 - 项目团队</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/common.css">
   <link rel="stylesheet" href="style.css">
   <!-- 引入Font Awesome图标（用于装饰和社交媒体图标） -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -133,6 +134,8 @@
 <body class="bg-background text-text font-sans">
 
   <script src="script.js"></script>
+  <!-- 引入公共脚本 -->
+  <script src="../../js/gongtong.js"></script>
   <!-- 导航栏（与其他页面统一） -->
   <nav class="navbar">
     <div class="navbar-container">
@@ -140,6 +143,9 @@
         <img src="picture/logo.jpg" alt="禹脉本草LOGO">
         <span class="logo-text">禹脉本草</span>
       </div>
+      
+      <button class="chat-btn" onclick="toggleChatDialog()">有问题请向"大禹"提问</button>
+      
       <div class="nav-links">
         <a href="../../index.html">文化溯源</a>
         <a href="../../products/index.html">本草好物</a>
