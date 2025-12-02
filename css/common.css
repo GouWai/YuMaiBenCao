@@ -142,3 +142,300 @@ body {
         text-align: center;
     }
 }
+
+/* AI对话助手样式 */
+.chat-btn {
+    background: linear-gradient(135deg, #2c6e49, #3fa36b);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(44, 110, 73, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.chat-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(44, 110, 73, 0.4);
+}
+
+.chat-btn:active {
+    transform: translateY(0);
+}
+
+/* 专有名词链接样式 */
+a[onclick^="askAbout"] {
+    position: relative;
+    transition: all 0.3s ease;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+a[onclick^="askAbout"]:hover {
+    background-color: rgba(44, 110, 73, 0.1);
+    text-decoration: none;
+    transform: scale(1.05);
+    box-shadow: 0 2px 4px rgba(44, 110, 73, 0.2);
+}
+
+/* 聊天对话框样式 */
+.chat-dialog {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 380px;
+    height: 500px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    z-index: 10000;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    animation: fadeInUp 0.3s ease-out forwards;
+    resize: both;
+    min-width: 300px;
+    min-height: 400px;
+    max-width: 90vw;
+    max-height: 90vh;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) translateY(0);
+    }
+}
+
+/* 对话框调整大小的手柄 */
+.dialog-resizer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    cursor: nwse-resize;
+    background: linear-gradient(135deg, transparent 0%, transparent 50%, #2c6e49 50%, #2c6e49 100%);
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.dialog-resizer:hover {
+    opacity: 1;
+}
+
+/* 对话框头部 */
+.dialog-header {
+    background: linear-gradient(135deg, #2c6e49, #3fa36b);
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: move;
+    user-select: none;
+    transition: background 0.3s ease;
+}
+
+.dialog-header:hover {
+    background: linear-gradient(135deg, #255a3d, #368d5b);
+}
+
+.dialog-title {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* 对话框主体 */
+.dialog-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* 聊天消息区域 */
+.chat-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #f9fafb;
+}
+
+/* 滚动条样式 */
+.chat-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* 消息样式 */
+.message {
+    display: flex;
+    margin-bottom: 15px;
+    animation: messageSlide 0.3s ease-out forwards;
+}
+
+@keyframes messageSlide {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.ai-message {
+    justify-content: flex-start;
+}
+
+.user-message {
+    justify-content: flex-end;
+}
+
+/* AI头像 */
+.ai-avatar {
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(135deg, #2c6e49, #3fa36b);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 10px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 6px rgba(44, 110, 73, 0.3);
+}
+
+/* 消息内容 */
+.message-content {
+    max-width: 75%;
+    padding: 12px 16px;
+    border-radius: 18px;
+    line-height: 1.5;
+    font-size: 14px;
+    word-wrap: break-word;
+    position: relative;
+}
+
+.ai-message .message-content {
+    background-color: white;
+    border-bottom-left-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e2e8f0;
+    color: #333;
+    font-weight: 500;
+}
+
+.user-message .message-content {
+    background: linear-gradient(135deg, #2c6e49, #3fa36b);
+    color: white;
+    border-bottom-right-radius: 5px;
+    box-shadow: 0 2px 8px rgba(44, 110, 73, 0.2);
+}
+
+/* 输入区域 */
+.input-area {
+    padding: 15px;
+    border-top: 1px solid #e2e8f0;
+    background-color: white;
+    display: flex;
+    gap: 10px;
+}
+
+.input-area input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 1px solid #e2e8f0;
+    border-radius: 25px;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.input-area input:focus {
+    border-color: #2c6e49;
+    box-shadow: 0 0 0 3px rgba(44, 110, 73, 0.1);
+}
+
+.input-area button {
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #2c6e49, #3fa36b);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(44, 110, 73, 0.3);
+    font-weight: 500;
+}
+
+.input-area button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(44, 110, 73, 0.4);
+}
+
+.input-area button:active {
+    transform: translateY(0);
+}
+
+/* 响应式设计 */
+@media (max-width: 480px) {
+    .chat-dialog {
+        width: calc(100% - 40px);
+        height: 70vh;
+        bottom: 10px;
+        right: 10px;
+    }
+    
+    .message-content {
+        max-width: 85%;
+    }
+}

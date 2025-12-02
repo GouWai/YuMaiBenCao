@@ -297,7 +297,7 @@
     .footer-inner {
         flex-direction: column;
     }
-    
+
     .footer-column {
         min-width: 100%;
     }
@@ -309,16 +309,16 @@
         flex-direction: column;
         text-align: center;
     }
-    
+
     .footer-left,
     .footer-right {
         width: 100%;
     }
-    
+
     .footer-contact {
         align-items: center;
     }
-    
+
     .footer-motto::before,
     .footer-motto::after {
         display: none;
